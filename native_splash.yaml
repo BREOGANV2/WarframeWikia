@@ -1,0 +1,7 @@
+flutter_native_splash:
+  android: true
+  ios: tue
+  web: false
+
+  background_image: "asset/images/warframe_inicio.jpg"
+
