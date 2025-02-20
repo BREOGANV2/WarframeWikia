@@ -39,18 +39,18 @@ class _ChooserPlanetasScreenState extends State<ChooserPlanetasScreen> {
     });
   }
 
-  // Función para convertir el tiempo en formato "42m 11s" a un objeto Duration
+  
   Duration _parseTimeString(String time) {
-    final regex = RegExp(r'(\d+)m (\d+)s'); // Buscar minutos y segundos
+    final regex = RegExp(r'(\d+)m (\d+)s'); 
     final match = regex.firstMatch(time);
 
     if (match != null) {
-      final minutes = int.parse(match.group(1)!); // Obtener minutos
-      final seconds = int.parse(match.group(2)!); // Obtener segundos
-      return Duration(minutes: minutes, seconds: seconds); // Crear Duration
+      final minutes = int.parse(match.group(1)!); 
+      final seconds = int.parse(match.group(2)!); 
+      return Duration(minutes: minutes, seconds: seconds); 
     }
 
-    return Duration.zero; // Si el formato no es válido, devolver Duration cero
+    return Duration.zero; 
   }
 
   @override

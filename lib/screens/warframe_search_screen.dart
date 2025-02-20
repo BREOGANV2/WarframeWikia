@@ -62,23 +62,32 @@ class _WarframeScreenState extends State<WarframeScreen> {
           Expanded(
             child: warframes.isEmpty
                 ? const Center(child: CircularProgressIndicator())
-                : ListView(
+                : GridView.count(
+                  crossAxisCount: 2,
                     children: warframes.map((warframe) {
-                      return Card(
-                        child: ListTile(
-                          title: Text(
-                            warframe.name ?? 'Sin nombre',
-                            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      return InkWell(
+                        child: Card(
+                          child: Column(
+                            children: [
+                              Expanded(
+                                child: Image.network(
+                                  "https://wiki.warframe.com/images/"+warframe.name!.replaceAll(RegExp(r'\s+|<ARCHWING>'), '')+".png",
+                                errorBuilder: (context, error, stackTrace) {
+                                  return CircularProgressIndicator();
+                                },
+                                fit: BoxFit.cover,),
+                              ),
+                              Text(
+                                "${warframe.name}",
+                                style: TextStyle(fontSize: 30),),
+                                Text("${warframe.type}")
+                            ],
                           ),
-                          subtitle: Text(
-                            'Tipo: ${warframe.type ?? 'Desconocido'}',
-                            style: const TextStyle(fontSize: 16),
-                          ),
-                          onTap: () => Navigator.of(context).pushNamed(
+                        ),
+                        onTap: () => Navigator.of(context).pushNamed(
                             RoutesWarframe.detailWarframw,
                             arguments: warframe,
                           ),
-                        ),
                       );
                     }).toList(),
                   ),
