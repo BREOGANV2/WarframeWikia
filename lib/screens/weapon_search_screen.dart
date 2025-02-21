@@ -19,7 +19,7 @@ class _WeaponsScreenState extends State<WeaponsScreen> {
   @override
   void initState() {
     super.initState();
-    cargarArmas(''); // Cargar todas las armas al inicio
+    cargarArmas(''); 
 
     searchController.addListener(() {
       setState(() {
@@ -30,7 +30,7 @@ class _WeaponsScreenState extends State<WeaponsScreen> {
 
   Future<void> cargarArmas(String query) async {
     if (query.trim().isEmpty) {
-      query = ' '; // Aseguramos que el valor sea al menos un espacio en blanco
+      query = ' '; 
     }
     final provider = context.read<ProviderWarframeApi>();
     await provider.WeaponsList(query);

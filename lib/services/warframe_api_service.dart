@@ -4,7 +4,6 @@ import 'package:app_warframe_api/core/model/model_status_cambion_drift.dart';
 import 'package:app_warframe_api/core/model/model_status_cetus.dart';
 import 'package:app_warframe_api/core/model/model_status_fortuna.dart';
 import 'package:app_warframe_api/core/model/model_warframe.dart';
-//import 'package:app_warframe_api/core/model/model_arma.dart'; // Importa el modelo de armas
 import 'package:app_warframe_api/core/model/model_weaponsSearchUnico.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';

@@ -38,7 +38,7 @@ class BodyWidgetNoticias extends StatelessWidget {
                       children: [
                         Container(
                           width: double.infinity,
-                          height: 600,
+                          height: (MediaQuery.of(context).size.height)*0.3,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(
@@ -98,35 +98,3 @@ class BodyWidgetNoticias extends StatelessWidget {
 
 
 
-/*
-return FutureBuilder<List<ModelNoticia>>(
-      future: getNoticias(), // Llamada a la función para obtener las noticias
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator()); // Muestra el indicador de carga
-        } else if (snapshot.hasError) {
-          return Center(child: Text('Error: ${snapshot.error}')); // Muestra el error si existe
-        } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-          return const Center(child: Text('No hay noticias disponibles')); // Muestra un mensaje si no hay datos
-        } else {
-          List<ModelNoticia> lista = snapshot.data!; // Lista de noticias
-          return ListView.builder(
-            itemCount: lista.length,
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => NoticiaScreen(index: index,lista: lista,),));
-                },
-                child: Column(
-                  children: [
-                  Text(lista[index].message,style: const TextStyle(fontSize: 35,fontStyle: FontStyle.italic),), // Título de la noticia
-                  Image.network(lista[index].imageLink
-                  ), 
-                  ],// URL de la noticia
-                ),
-              );
-            },
-          );
-        }
-      },
-    )*/

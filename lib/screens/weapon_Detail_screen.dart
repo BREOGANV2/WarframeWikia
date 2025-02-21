@@ -28,7 +28,7 @@ class WeaponDetailScreen extends StatelessWidget {
             width: 100,
             height: 350,
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.blue, width: 2), // Línea azul
+              border: Border.all(color: Colors.blue, width: 2), 
             ),
             child: Image.network(
               "https://wiki.warframe.com/images/${nombre.trim()}.png",

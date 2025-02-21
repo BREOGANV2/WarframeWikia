@@ -21,9 +21,8 @@ class HomeScreen extends StatelessWidget {
         elevation: 10,
       ),
       drawer: MyDrawer(),
-      body: Container(
-        child: const BodyWidgetNoticias(),
-      ),
+      body:   BodyWidgetNoticias(),
+      
     );
   }
 }

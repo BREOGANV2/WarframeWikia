@@ -49,7 +49,6 @@ class Translations {
   Translations();
 
   factory Translations.fromMap(Map<String, dynamic> map) {
-    // Implementa según la estructura de `Translations` si es necesario
     return Translations();
   }
 }

@@ -31,7 +31,7 @@ class _WarframeScreenState extends State<WarframeScreen> {
 
   Future<void> cargarWarframes(String query) async {
     if (query.trim().isEmpty) {
-      query = ' '; // Aseguramos que el valor sea al menos un espacio en blanco
+      query = ' '; 
     }
     final provider = context.read<ProviderWarframeApi>();
     await provider.WarframeList(query);

@@ -38,7 +38,7 @@ class _MisionesReliquiasScreenState extends State<MisionesReliquiasScreen> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("asset/images/fondo.png"), // Imagen de fondo
+          image: AssetImage("asset/images/fondo.png"), 
           fit: BoxFit.cover,
         ),
       ),
@@ -47,7 +47,7 @@ class _MisionesReliquiasScreenState extends State<MisionesReliquiasScreen> {
           title: const Text("Incursiones del Vacio"),
         ),
         drawer: MyDrawer(),
-        backgroundColor: Colors.transparent, // Permite ver el fondo
+        backgroundColor: Colors.transparent, 
         body: PageView(
           controller: _pageController,
           onPageChanged: (index) {
