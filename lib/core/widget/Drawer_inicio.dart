@@ -43,7 +43,7 @@ class MyDrawer extends StatelessWidget {
   Widget _buildDrawerOption(String title,String ruta ,IconData icon, BuildContext context, {bool isExit = false}) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushNamed(ruta);
+        Navigator.of(context).pushReplacementNamed(ruta);
       },
       child: Container(
         height: 80,
