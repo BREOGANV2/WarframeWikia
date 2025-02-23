@@ -45,7 +45,7 @@ class _WeaponsScreenState extends State<WeaponsScreen> {
       appBar: AppBar(
         title: const Text('Warframe Weapons'),
       ),
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       body: Column(
         children: [
           Padding(

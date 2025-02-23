@@ -22,7 +22,7 @@ class WarframeDetailScreen extends StatelessWidget {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
       image: DecorationImage(
         image: AssetImage("asset/images/warframes.jpg"),
         fit: BoxFit.cover, 
@@ -33,15 +33,15 @@ class WarframeDetailScreen extends StatelessWidget {
           children: [
            
             Container(
-              color: Color.fromARGB(174, 0, 0, 0),
+              color: const Color.fromARGB(174, 0, 0, 0),
               height: 500,
               width: double.infinity,
               child: Image.network(
-                "https://wiki.warframe.com/images/"+nombre+"Full.png",
+                "https://wiki.warframe.com/images/${nombre}Full.png",
                 errorBuilder: (context, error, stackTrace) {
-                  return Image.network("https://wiki.warframe.com/images/"+nombre!+".png",
+                  return Image.network("https://wiki.warframe.com/images/${nombre!}.png",
                   errorBuilder: (context, error, stackTrace) {
-                    return CircularProgressIndicator();
+                    return const CircularProgressIndicator();
                   },);             
                 },
                 fit: BoxFit.contain,
@@ -134,7 +134,7 @@ class WarframeDetailScreen extends StatelessWidget {
 
   Widget containerTexto(String texto) {
     return Container(
-      color:  Color.fromARGB(174, 0, 0, 0),
+      color:  const Color.fromARGB(174, 0, 0, 0),
       width: double.infinity,
       alignment: Alignment.center,
       padding: const EdgeInsets.symmetric(vertical: 10),

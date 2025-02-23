@@ -20,8 +20,8 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 0, 0, 0), 
         elevation: 10,
       ),
-      drawer: MyDrawer(),
-      body:   BodyWidgetNoticias(),
+      drawer: const MyDrawer(),
+      body:   const BodyWidgetNoticias(),
       
     );
   }

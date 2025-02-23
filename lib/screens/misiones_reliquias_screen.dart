@@ -46,7 +46,7 @@ class _MisionesReliquiasScreenState extends State<MisionesReliquiasScreen> {
         appBar: AppBar(
           title: const Text("Incursiones del Vacio"),
         ),
-        drawer: MyDrawer(),
+        drawer: const MyDrawer(),
         backgroundColor: Colors.transparent, 
         body: PageView(
           controller: _pageController,

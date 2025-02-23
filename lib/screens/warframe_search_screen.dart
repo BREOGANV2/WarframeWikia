@@ -46,7 +46,7 @@ class _WarframeScreenState extends State<WarframeScreen> {
       appBar: AppBar(
         title: const Text('Warframes'),
       ),
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       body: Column(
         children: [
           Padding(
@@ -71,15 +71,15 @@ class _WarframeScreenState extends State<WarframeScreen> {
                             children: [
                               Expanded(
                                 child: Image.network(
-                                  "https://wiki.warframe.com/images/"+warframe.name!.replaceAll(RegExp(r'\s+|<ARCHWING>'), '')+".png",
+                                  "https://wiki.warframe.com/images/${warframe.name!.replaceAll(RegExp(r'\s+|<ARCHWING>'), '')}.png",
                                 errorBuilder: (context, error, stackTrace) {
-                                  return CircularProgressIndicator();
+                                  return const CircularProgressIndicator();
                                 },
                                 fit: BoxFit.cover,),
                               ),
                               Text(
                                 "${warframe.name}",
-                                style: TextStyle(fontSize: 30),),
+                                style: const TextStyle(fontSize: 30),),
                                 Text("${warframe.type}")
                             ],
                           ),

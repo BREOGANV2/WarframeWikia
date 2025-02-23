@@ -19,10 +19,10 @@ class RoutesWarframe {
    static  Map<String,WidgetBuilder>get Routes => {
     "home" : (_) => const HomeScreen(),
     "escogerPlanetas": (_) => const ChooserPlanetasScreen(),
-    "misiones": (_) =>  MisionesReliquiasScreen(),
-    "armas": (_) => WeaponsScreen(),
+    "misiones": (_) =>  const MisionesReliquiasScreen(),
+    "armas": (_) => const WeaponsScreen(),
     "detailArma": (_) => const WeaponDetailScreen(),
     "detailWarframe": (_) => const WarframeDetailScreen(),
-    "warframe": (_) => WarframeScreen()
+    "warframe": (_) => const WarframeScreen()
   };
 }
