@@ -34,7 +34,7 @@ class MyDrawer extends StatelessWidget {
               ],
             ),
           ),
-          _buildDrawerOption('Exit',"home", Icons.exit_to_app, context, isExit: true),
+          _buildDrawerOption('Noticias',"home", Icons.exit_to_app, context, isExit: true),
         ],
       ),
     );

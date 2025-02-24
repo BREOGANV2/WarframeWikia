@@ -1,4 +1,5 @@
 import 'package:app_warframe_api/core/widget/Drawer_inicio.dart';
+import 'package:app_warframe_api/core/widget/widget_salir.dart';
 import 'package:app_warframe_api/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -41,55 +42,61 @@ class _WeaponsScreenState extends State<WeaponsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Warframe Weapons'),
-      ),
-      drawer: const MyDrawer(),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: searchController,
-              decoration: const InputDecoration(
-                labelText: 'Buscar arma',
-                border: OutlineInputBorder(),
+    return WillPopScope(
+      onWillPop: () async {
+        bool salir = await mostrarDialogoSalir(context); 
+        return salir;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Warframe Weapons'),
+        ),
+        drawer: const MyDrawer(),
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: searchController,
+                decoration: const InputDecoration(
+                  labelText: 'Buscar arma',
+                  border: OutlineInputBorder(),
+                ),
               ),
             ),
-          ),
-          Expanded(
-            child: weapons.isEmpty
-                ? const Center(child: CircularProgressIndicator())
-                : GridView.count(
-                    crossAxisCount: 3,
-                    children: weapons.map((weapon) {
-                      return Card(
-                        child: InkWell(
-                          child: Column(
-                            children: [
-                              Expanded(
-
-                                child: 
-                                Image.network("https://wiki.warframe.com/images/${weapon.name.replaceAll(RegExp(r'\s+|<ARCHWING>'), '')}.png",
-                                errorBuilder: (context, error, stackTrace) {
-                                  return Image.asset("asset/images/armas.jpg");
-                                },),
-                                ),
-                              Center(child: Text(weapon.name)),
-                              Center(child: Text(weapon.type))
-                            ],
-                          ),
-                           onTap: () => Navigator.of(context).pushNamed(
-                            RoutesWarframe.detailArma,
-                            arguments: weapon,
-                          )
-                          ),
-                      );
-                    }).toList(),
-                  ),
-          ),
-        ],
+            Expanded(
+              child: weapons.isEmpty
+                  ? const Center(child: CircularProgressIndicator())
+                  : GridView.count(
+                      crossAxisCount: 3,
+                      children: weapons.map((weapon) {
+                        return Card(
+                          child: InkWell(
+                            child: Column(
+                              children: [
+                                Expanded(
+      
+                                  child: 
+                                  Image.network("https://wiki.warframe.com/images/${weapon.name.replaceAll(RegExp(r'\s+|<ARCHWING>'), '')}.png",
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return Image.asset("asset/images/armas.jpg");
+                                  },),
+                                  ),
+                                Center(child: Text(weapon.name)),
+                                Center(child: Text(weapon.type))
+                              ],
+                            ),
+                             onTap: () => Navigator.of(context).pushNamed(
+                              RoutesWarframe.detailArma,
+                              arguments: weapon,
+                            )
+                            ),
+                        );
+                      }).toList(),
+                    ),
+            ),
+          ],
+        ),
       ),
     );
   }

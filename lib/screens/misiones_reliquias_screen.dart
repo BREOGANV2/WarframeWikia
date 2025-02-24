@@ -1,5 +1,6 @@
 import 'package:app_warframe_api/core/model/model_Misiones_Reliquias.dart';
 import 'package:app_warframe_api/core/widget/Drawer_inicio.dart';
+import 'package:app_warframe_api/core/widget/widget_salir.dart';
 import 'package:app_warframe_api/provider/provider_warframe_api.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -92,62 +93,68 @@ class _MisionesReliquiasScreenState extends State<MisionesReliquiasScreen> {
   }
 
   Widget generarApartado(String relic, String ruta) {
-    return Consumer<ProviderWarframeApi>(
-      builder: (context, providerWarframe, child) {
-        return FutureBuilder(
-          future: providerWarframe.MisionesReliquias(),
-          builder: (context, snapshot) {
-            if (snapshot.hasError) {
+    return WillPopScope(
+      onWillPop: () async {
+        bool salir = await mostrarDialogoSalir(context); 
+        return salir;
+      },
+      child: Consumer<ProviderWarframeApi>(
+        builder: (context, providerWarframe, child) {
+          return FutureBuilder(
+            future: providerWarframe.MisionesReliquias(),
+            builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                return const Center(
+                  child: Text(
+                    "Hay un error",
+                    style: TextStyle(fontSize: 25, color: Colors.red),
+                  ),
+                );
+              } else if (snapshot.hasData) {
+                List<ModelMisionesReliquias> misiones = snapshot.data!;
+                return ListView(
+                  children: misiones.map((e) {
+                    if (e.tier == relic) {
+                      return Container(
+                        height: 140,
+                        margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: const Color.fromARGB(255, 89, 29, 230), width: 2),
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.black.withOpacity(0.75),
+                        ),
+                        child: ListTile(
+                          contentPadding: const EdgeInsets.all(15),
+                          title: Text(
+                            e.missionType,
+                            style: const TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          ),
+                          subtitle: Text(
+                            e.node,
+                            style: const TextStyle(fontSize: 20, color: Colors.white70),
+                          ),
+                          leading: Image.network(ruta, width: 60, height: 60),
+                        ),
+                      );
+                    }
+                    return const SizedBox.shrink();
+                  }).toList(),
+                );
+              }
               return const Center(
                 child: Text(
-                  "Hay un error",
-                  style: TextStyle(fontSize: 25, color: Colors.red),
+                  "Cargando datos...",
+                  style: TextStyle(fontSize: 25, color: Colors.white),
                 ),
               );
-            } else if (snapshot.hasData) {
-              List<ModelMisionesReliquias> misiones = snapshot.data!;
-              return ListView(
-                children: misiones.map((e) {
-                  if (e.tier == relic) {
-                    return Container(
-                      height: 140,
-                      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                            color: const Color.fromARGB(255, 89, 29, 230), width: 2),
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.black.withOpacity(0.75),
-                      ),
-                      child: ListTile(
-                        contentPadding: const EdgeInsets.all(15),
-                        title: Text(
-                          e.missionType,
-                          style: const TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
-                        ),
-                        subtitle: Text(
-                          e.node,
-                          style: const TextStyle(fontSize: 20, color: Colors.white70),
-                        ),
-                        leading: Image.network(ruta, width: 60, height: 60),
-                      ),
-                    );
-                  }
-                  return const SizedBox.shrink();
-                }).toList(),
-              );
-            }
-            return const Center(
-              child: Text(
-                "Cargando datos...",
-                style: TextStyle(fontSize: 25, color: Colors.white),
-              ),
-            );
-          },
-        );
-      },
+            },
+          );
+        },
+      ),
     );
   }
 }

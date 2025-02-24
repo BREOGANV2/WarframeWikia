@@ -42,7 +42,7 @@ class WarframeDetailScreen extends StatelessWidget {
                   return Image.network("https://wiki.warframe.com/images/${nombre!}.png",
                   errorBuilder: (context, error, stackTrace) {
                     return const CircularProgressIndicator();
-                  },);             
+                  },);                
                 },
                 fit: BoxFit.contain,
               ),
