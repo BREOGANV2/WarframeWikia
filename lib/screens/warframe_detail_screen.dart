@@ -141,7 +141,7 @@ class WarframeDetailScreen extends StatelessWidget {
       child: Text(
         texto,
         textAlign: TextAlign.justify,
-        style: const TextStyle(fontSize: 25),
+        style: const TextStyle(fontSize:20),
       ),
     );
   }

@@ -33,7 +33,7 @@ class _WeaponsScreenState extends State<WeaponsScreen> {
     if (query.trim().isEmpty) {
       query = ' '; 
     }
-    final provider = context.read<ProviderWarframeApi>();
+    final provider = Provider.of<ProviderWarframeApi>(context ,listen: false);
     await provider.WeaponsList(query);
     setState(() {
       weapons = provider.arma ?? [];

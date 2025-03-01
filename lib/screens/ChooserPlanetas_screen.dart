@@ -75,7 +75,7 @@ class _ChooserPlanetasScreenState extends State<ChooserPlanetasScreen> {
           backgroundColor: Colors.transparent,
           drawer: const MyDrawer(),
           appBar: AppBar(
-            title: const Text('Image Carousel'),
+            title: const Text('Planetas'),
           ),
           body: Column(
             children: [
